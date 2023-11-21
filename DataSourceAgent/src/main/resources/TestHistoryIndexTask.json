@@ -1,0 +1,124 @@
+{
+  "type": "index_parallel",
+  "spec": {
+    "ioConfig": {
+      "type": "index_parallel",
+      "inputSource": {
+        "type": "local",
+        "baseDir": "<PATH>",
+        "filter": "*.csv"
+      },
+      "inputFormat": {
+        "type": "csv",
+        "findColumnsFromHeader": true
+      },
+      "appendToExisting": true
+    },
+    "tuningConfig": {
+      "type": "index_parallel",
+      "partitionsSpec": {
+        "type": "dynamic"
+      }
+    },
+    "dataSchema": {
+      "dataSource": "TestHistory",
+      "timestampSpec": {
+        "column": "!!!_no_such_column_!!!",
+        "missingValue": "2022-11-16T00:00:00Z"
+      },
+      "transformSpec": {},
+      "dimensionsSpec": {
+        "dimensions": [
+          "waferId",
+          "mapId",
+          "productId",
+          {
+            "type": "string",
+            "name": "waferNumber"
+          },
+          {
+            "type": "long",
+            "name": "waferStartTime"
+          },
+          {
+            "type": "long",
+            "name": "waferEndTime"
+          },
+          "lotId",
+          "productName",
+          "careerId",
+          "deviceId",
+          "originalLotId",
+          "lotNumber",
+          "programName",
+          {
+            "type": "long",
+            "name": "lotStartTime"
+          },
+          {
+            "type": "long",
+            "name": "lotEndTime"
+          },
+          "processCode",
+          "probeCardId",
+          {
+            "type": "string",
+            "name": "testBoardId"
+          },
+          "status",
+          {
+            "type": "long",
+            "name": "slotNumber"
+          },
+          {
+            "type": "long",
+            "name": "testTime"
+          },
+          {
+            "type": "long",
+            "name": "goodChipCount"
+          },
+          {
+            "type": "double",
+            "name": "lastYield"
+          },
+          {
+            "type": "double",
+            "name": "yield"
+          },
+          {
+            "type": "long",
+            "name": "testFailCount"
+          },
+          {
+            "type": "long",
+            "name": "testPassCount"
+          },
+          {
+            "type": "long",
+            "name": "testChipCount"
+          },
+          {
+            "type": "double",
+            "name": "testChipRatio"
+          },
+          {
+            "type": "double",
+            "name": "failRatio"
+          },
+          "deviceDesignGroup",
+          "deviceGroup",
+          {
+            "type": "long",
+            "name": "chipArea"
+          }
+        ]
+      },
+      "granularitySpec": {
+        "queryGranularity": "none",
+        "rollup": false,
+        "segmentGranularity": "day"
+      }
+    }
+  }
+}
